@@ -29,55 +29,25 @@
  *
  * This task should never exit; it should end with some kind of infinite loop, even if empty.
  */
- #define USE_CPP
- #if defined USE_CPP
+
  #include "MotorUnit.h"
-
-#else
- typedef struct _MotorUnit
- {
-	 const char* name;
-	 int speed;
-	 int motorPin;
- }
- MotorUnit;
-
-void setSpeed(MotorUnit *M, int newS)
-{
-	M->speed=newS;
-	motorSet(M->motorPin,M->speed);
-}
-
-MotorUnit _motor1={"motor1",0,1};
-MotorUnit *motor1 = &_motor1;
-#endif
 
 void operatorControl()
 {
-	#if defined USE_CPP
 	MotorUnit motor1(1);
-	#endif
+
+	// Fred is green
 	
 	while (true)
 	{
 			delay(20);
 			if(!digitalRead(3))
 			{
-				#if defined USE_CPP
 				motor1.setSpeed(50);
-				#else
-				setSpeed(motor1, 50);
-				digitalWrite(9, true);
-				#endif
 			}
 			else
 			{
-				#if defined USE_CPP
 				motor1.setSpeed(0);
-				#else
-				setSpeed(motor1, 0);
-				digitalWrite(9, false);
-				#endif
 			}
 	 }
 }
