@@ -36,8 +36,8 @@ void operatorControl()
 {
 	MotorUnit motor1(1);
 
-	// Fred is green
-	
+	// Fred is blue
+
 	while (true)
 	{
 			delay(20);
