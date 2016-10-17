@@ -1,11 +1,21 @@
 import serial
+import serial.tools.list_ports
 import time
 import sys
 from enum import Enum
 
-portname = sys.argv[1]
-file = sys.argv[2]
+file = sys.argv[1]
+if len(sys.argv) == 3:
+    portname = sys.argv[2]
+else:
+    ports = [x for x in serial.tools.list_ports.comports() if x.vid is not None and (x.vid in [0x4d8, 0x67b] or 'vex' in x.product.lower())]
+    if(len(ports) == 0):
+        print("ERROR: could not detect connected Cortex")
+    else:
+        portname = ports[0].device
 
+
+print("Connecting to: {}".format(portname))
 port = serial.Serial(portname, baudrate=115200,parity=serial.PARITY_EVEN,timeout=5)
 
 class ConnectionType(Enum):
