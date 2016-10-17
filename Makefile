@@ -35,6 +35,9 @@ clean:
 upload: all
 	$(UPLOAD)
 
+terminal:
+	@python3 terminal.py
+
 # Phony force-look target
 _force_look:
 	@true
