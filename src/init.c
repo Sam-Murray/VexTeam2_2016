@@ -25,9 +25,8 @@
   * The purpose of this function is solely to set the default pin modes (pinMode()) and port states (digitalWrite()) of limit switches, push buttons, and solenoids. It can also safely configure a UART port (usartOpen()) but cannot set up an LCD (lcdInit()).
   */
 void initializeIO() {
-
-  pinMode(9,OUTPUT);
-  pinMode(3,INPUT);
+  pinMode(1,OUTPUT);
+  //void operatorControl();
 }
 
 /**
@@ -40,5 +39,6 @@ void initializeIO() {
  * This function must exit relatively promptly, or the operatorControl() and autonomous() tasks will not start. An autonomous mode selection menu like the pre_auton() in other environments can be implemented in this task if desired.
  */
 void initialize() {
+
 
 }

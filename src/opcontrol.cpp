@@ -29,25 +29,57 @@
  *
  * This task should never exit; it should end with some kind of infinite loop, even if empty.
  */
+ // {
+ // 		delay(200);
+ //     //!digitalRead(3)
+ // 		if(connected)
+ // 		{
+ //       digitalWrite(9,true);
+ // 			//motor1.setSpeed(50);
+ //       delay(400);
+ //       digitalWrite(9,false);
+ // 			//motor1.setSpeed(50);
+ //       delay(100);
+ //       digitalWrite(9,true);
+ //       delay(400);
+ // 		}
+ //
+ //     //motor1.setSpeed(0);
+ //     digitalWrite(9,false);
 
- #include "MotorUnit.h"
+   // if(connected){
+   //   digitalWrite(9,true);
+   // }
+   // else
+   // {
+   //   digitalWrite(9,false);
+   // }
+   //digitalWrite(9,false);
+ #include "Robot.h"
 
 void operatorControl()
 {
-	MotorUnit motor1(1);
-
-	// Fred is blue
-
-	while (true)
-	{
-			delay(20);
-			if(!digitalRead(3))
-			{
-				motor1.setSpeed(50);
-			}
-			else
-			{
-				motor1.setSpeed(0);
-			}
-	 }
+  // //printf("HELLO COMPUTER");
+  // bool opContMode=true;//Breaks for loop when swiching modes, probably not nessisary, but placeholder for now.
+	// MotorUnit motor1(3);
+  // bool connected=false;
+  // while (true)
+  // {
+  //     //printf("HELLO COMPUTER, im looping!");
+  //   connected=isJoystickConnected(1);
+  //   if(connected)
+  //   {
+  //     if(joystickGetDigital(1,8,JOY_UP))
+  //     {
+  //       motor1.setSpeed(50);
+  //     } else
+  //     {
+  //       motor1.setSpeed(0);
+  //     }
+  //   }
+  //}
+  Robot robot= Robot();
+  while(true){
+    robot.Update(1);
+  }
 }
