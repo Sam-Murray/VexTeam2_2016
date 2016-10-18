@@ -1,6 +1,6 @@
 #include "DriveTrain.h"
 DriveTrain::DriveTrain():FR(MotorUnit(1)), FL(MotorUnit(2)), BL(MotorUnit(3)), BR(MotorUnit(4)){
-  speedConvertion=1 ;
+  speedConvertion=1;
 }
 
 DriveTrain::DriveTrain(int FRpin, int FLpin, int BLpin, int BRpin,int speedC):FR(MotorUnit(FRpin)), FL(MotorUnit(FLpin)), BL(MotorUnit(BLpin)), BR(MotorUnit(BRpin)){
@@ -45,6 +45,9 @@ void DriveTrain::Update(int xMove, int yMove, int xTurn, int yTurn){
   // }
   //strafe code
   double moveSpeed=sqrt(xMove*xMove  + yMove*yMove)/speedConvertion;
+  if(moveSpeed<=4){//prevents annoying miro-inputs
+    moveSpeed=0;
+  }
   double unroundedAngle = atan2(yMove,xMove);
   int dFR=0;
   int dFL=0;
@@ -76,6 +79,14 @@ void DriveTrain::Update(int xMove, int yMove, int xTurn, int yTurn){
     dBR=(int)moveSpeed*-1;
 
   }
+  dFR += -xTurn/speedConvertion;
+  dFL += -xTurn/speedConvertion;
+  dBL += -xTurn/speedConvertion;
+  dBR += -xTurn/speedConvertion;
+  // dFR += -xTurn/4;
+  // dFL += -xTurn/4;
+  // dBL += -xTurn/4;
+  // dBR += -xTurn/4;
   MotorSet(dFR,dFL,dBL,dBR);
 
 
