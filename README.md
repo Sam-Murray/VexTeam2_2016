@@ -13,7 +13,7 @@
     * Optional - needed only if you want to use git to manage your code.
 * To install your code, type `make upload` with the vex unit connected by serial cable - or via the cable to the joystick controller
 * To connect to the debug terminal, type `make terminal`.  
-  * To exit type <control>-c
+  * To exit type ctrl-c
   * NOTE: The terminal may freeze after a while of inactivity.  exit and restart.
 
 
