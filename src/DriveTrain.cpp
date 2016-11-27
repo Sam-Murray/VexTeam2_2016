@@ -45,7 +45,7 @@ void DriveTrain::Update(int xMove, int yMove, int xTurn, int yTurn){
   // }
   //strafe code
   double moveSpeed=sqrt(xMove*xMove  + yMove*yMove)/speedConvertion;
-  if(moveSpeed<=4){//prevents annoying miro-inputs
+  if(moveSpeed<=10){//prevents annoying miro-inputs
     moveSpeed=0;
   }
   double unroundedAngle = atan2(yMove,xMove);

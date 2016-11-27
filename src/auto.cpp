@@ -16,6 +16,7 @@
 ********************************************************************************/
 
 #include "main.h"
+#include "Robot.h"
 
 /**
 * Runs the user autonomous code.
@@ -27,4 +28,15 @@
 * The autonomous task may exit, unlike operatorControl() which should never exit. If it does so, the robot will await a switch to another mode or disable/enable cycle.
 */
 void autonomous() {
+  Robot robot= Robot();
+  for(int counter=0;counter < 2000;){
+    robot.AutoUpdate(1);
+    counter++;
+    wait(1);
+  }
+  for(int counter=0;counter < 2000;){
+    robot.AutoUpdate(2);
+    counter++;
+    wait(1);
+  }
 }

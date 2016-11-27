@@ -6,7 +6,7 @@ MAKE_COMMAND=make
 # Makefile for IFI VeX Cortex Microcontroller (STM32F103VD series)
 DEVICE=VexCortex
 # Libraries to include in the link (use -L and -l) e.g. -lm, -lmyLib
-LIBRARIES=$(ROOT)/firmware/libccos.a -lgcc -lm
+LIBRARIES=$(ROOT)/firmware/libccos.a -lgcc -lm 
 LIBSML=$(ROOT)/firmware/libsml.a
 LIBLCD=$(ROOT)/firmware/liblcd.a
 # Prefix for ARM tools (must be on the path)
@@ -38,7 +38,7 @@ AFLAGS:=$(MCUAFLAGS)
 ARFLAGS:=$(MCUCFLAGS)
 CCFLAGS:=-c -Wall $(MCUCFLAGS) -Os -ffunction-sections -fsigned-char -fomit-frame-pointer -fsingle-precision-constant
 CFLAGS:=$(CCFLAGS) -std=gnu99 -Werror=implicit-function-declaration -DVERSION=\"$(GIT_VERSION)\"
-CPPFLAGS:=$(CCFLAGS) -fno-exceptions -fno-rtti -felide-constructors
+CPPFLAGS:=$(CCFLAGS) -fno-exceptions -fno-rtti -felide-constructors -std=c++11
 LDFLAGS:=-Wall $(MCUCFLAGS) $(MCULFLAGS) -Wl,--gc-sections
 
 # Tools used in program
