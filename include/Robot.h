@@ -3,6 +3,7 @@
 #include "API.h"
 #include "DriveTrain.h"
 #include "ActuatorArray.h"
+#include "Arm.h"
 
 #define X_MOVE 4
 #define Y_MOVE 3
@@ -13,13 +14,11 @@ class Robot
 {
 public:
   Robot();
-  Robot(int pPin ,int FRpin, int FLpin, int Blpin, int BRpin,std::vector<int> armPins,std::vector<int> hangerPins,int speedC); //constructor for ROBOT
+  Robot(int hPin ,int FRpin, int FLpin, int Blpin, int BRpin,int clawPin, std::array<int,4> armPins,int speedC); //constructor for ROBOT
   DriveTrain driveT;//drive train
-  Actuator pusher;
-  ActuatorArray hanger;
-  ActuatorArray arm;
-
-
+  Arm arm;
+  Actuator hanger;
+  Actuator claw;
   void Update(int joystickSlot);
   void AutoUpdate(int stage);
 };

@@ -1,16 +1,17 @@
 #ifndef ACTUATOR_ARRAY_H
 #define ACTUATOR_ARRAY_H
 #include "Actuator.h"
-#include <vector>
+#define __FILE_defined
+#include <array>
 
 
 class ActuatorArray{
 private:
-  std::vector<Actuator> array;
+  std::array<Actuator,4> Array;
 
 public:
 ActuatorArray();
-ActuatorArray(std::vector<int> pinNumber);
+ActuatorArray(std::array<int,4> pinNumber);
 void Update(bool outPressed, bool inPressed);
 
 };

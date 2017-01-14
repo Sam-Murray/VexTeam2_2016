@@ -1,17 +1,17 @@
 #include "ActuatorArray.h"
 ActuatorArray::ActuatorArray(){
-  array=std::vector<Actuator>();
+  Array=std::array<Actuator,4>();
 }
-ActuatorArray::ActuatorArray(std::vector<int> pinNumber){
-  array=std::vector<Actuator>(pinNumber.size());
+ActuatorArray::ActuatorArray(std::array<int,4> pinNumber){
+  Array=std::array<Actuator,4>();
   for(int i=0;i<pinNumber.size();i++){
-    array[i]=Actuator(pinNumber[i]);
+    Array[i]=Actuator(pinNumber[i]);
   }
 
 
 }
 void ActuatorArray::Update(bool outPressed, bool inPressed){
-  for(int i=0;i<array.size();i++){
-    array[i].Update(outPressed,inPressed);
+  for(int i=0;i<Array.size();i++){
+    Array[i].Update(outPressed,inPressed);
   }
 }
