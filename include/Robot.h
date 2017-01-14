@@ -14,11 +14,11 @@ class Robot
 {
 public:
   Robot();
-  Robot(int hPin ,int FRpin, int FLpin, int Blpin, int BRpin,int clawPin, std::array<int,4> armPins,int speedC); //constructor for ROBOT
+  Robot(int hangerPin ,int FRpin, int FLpin, int Blpin, int BRpin,std::array<int,4> clawPins, std::array<int,4> armPins,int speedC); //constructor for ROBOT
   DriveTrain driveT;//drive train
   Arm arm;
   Actuator hanger;
-  Actuator claw;
+  ActuatorArray claw;
   void Update(int joystickSlot);
   void AutoUpdate(int stage);
 };

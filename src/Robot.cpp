@@ -4,16 +4,16 @@ Robot::Robot()
 {
   driveT=DriveTrain();
   arm=Arm();
-  hanger=Actuator(9);
-  claw=Actuator(10);
+  hanger=Actuator(8);
+  claw=ActuatorArray({9,10});
 
 }
-Robot::Robot(int hPin,int FRpin, int FLpin, int Blpin, int BRpin, int clawPin,std::array<int,4> armPins,int speedC)
+Robot::Robot(int hPin,int FRpin, int FLpin, int Blpin, int BRpin, std::array<int,4> clawPin,std::array<int,4> armPins,int speedC)
 {
   driveT=DriveTrain(FRpin, FLpin, Blpin, BRpin, speedC);
   arm=Arm(armPins);
   hanger=Actuator(hPin);
-  claw=Actuator(clawPin);
+  claw=ActuatorArray(clawPin);
 
 
 }

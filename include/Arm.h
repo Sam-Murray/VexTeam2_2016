@@ -7,7 +7,7 @@ class Arm{
     //Encoder goes here
   public:
     Arm();
-    Arm(int p1,int p2,int p3,int p4);
+    Arm(int p1,int p2,int p3);
     Arm(std::array<int,4> pins);
     void Update(bool outPressed,bool inPressed);
     //TODO:: implement 3 state functionality
