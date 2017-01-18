@@ -1,18 +1,26 @@
 #include "Arm.h"
 Arm::Arm(){
-  std::array<int,4> array={5,6,7};
-  Motors=ActuatorArray(array);
+  std::array<int,4> arrayLeft={5,6};
+  std::array<int,4> arrayRight={7,8};
+  MotorsLeft=ActuatorArray(arrayLeft);
+  MotorsRight=ActuatorArray(arrayRight);
+
 }
-Arm::Arm(int p1,int p2,int p3){
-  std::array<int,4> array;
-  array[0]=p1;
-  array[1]=p2;
-  array[2]=p3;
-  Motors=ActuatorArray(array);
+Arm::Arm(int p1,int p2,int p3,int p4,int p5,int p6){
+  std::array<int,4> arrayLeft;
+  arrayLeft[0]=p1;
+  arrayLeft[1]=p2;
+  std::array<int,4> arrayRight;
+  arrayRight[0]=p1;
+  arrayRight[1]=p2;
+  MotorsLeft=ActuatorArray(arrayLeft);
+  MotorsRight=ActuatorArray(arrayRight);
 }
-Arm::Arm(std::array<int,4> pins){
-  Motors=ActuatorArray(pins);
+Arm::Arm(std::array<int,4> pinsLeft,std::array<int,4> pinsRight){
+  MotorsLeft=ActuatorArray(pinsLeft);
+  MotorsRight=ActuatorArray(pinsRight);
 }
 void Arm::Update(bool outPressed,bool inPressed){
-  Motors.Update(outPressed,inPressed);
+  MotorsLeft.Update(outPressed,inPressed);
+  MotorsRight.Update(inPressed,outPressed);
 }

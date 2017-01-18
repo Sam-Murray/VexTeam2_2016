@@ -14,10 +14,9 @@ class Robot
 {
 public:
   Robot();
-  Robot(int hangerPin ,int FRpin, int FLpin, int Blpin, int BRpin,std::array<int,4> clawPins, std::array<int,4> armPins,int speedC); //constructor for ROBOT
+  Robot(int hangerPin ,int FRpin, int FLpin, int Blpin, int BRpin,std::array<int,4> clawPins,std::array<int,4> armPinsLeft,std::array<int,4> armPinsRight,int speedC); //constructor for ROBOT
   DriveTrain driveT;//drive train
   Arm arm;
-  Actuator hanger;
   ActuatorArray claw;
   void Update(int joystickSlot);
   void AutoUpdate(int stage);
