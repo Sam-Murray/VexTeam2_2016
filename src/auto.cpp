@@ -17,7 +17,17 @@
 
 #include "main.h"
 #include "Robot.h"
-
+#include"ArmLiftAction.h"
+#include"ArmLowerAction.h"
+#include "ClawCloseAction.h"
+#include "ClawOpenAction.h"
+#include "DriveBackwardsAction.h"
+#include "DriveForwardAction.h"
+#include "DriveRightAction.h"
+#include "DriveLeftAction.h"
+#include "DriveTurnLeftAction.h"
+#include "DriveTurnRightAction.h"
+#include "ClawBegin.h"
 /**
 * Runs the user autonomous code.
 *
@@ -27,16 +37,84 @@
 *
 * The autonomous task may exit, unlike operatorControl() which should never exit. If it does so, the robot will await a switch to another mode or disable/enable cycle.
 */
+//
+// // void autoStage(int stage, int duration,Robot robot) {
+// //   for(int counter=0;counter < duration; counter++){
+// //     robot.AutoUpdate(stage);
+// //     wait(1);
+// //   }
+// }
 void autonomous() {
   Robot robot= Robot();
-  for(int counter=0;counter < 2000;){
-    robot.AutoUpdate(1);
-    counter++;
-    wait(1);
-  }
-  for(int counter=0;counter < 2000;){
-    robot.AutoUpdate(2);
-    counter++;
-    wait(1);
-  }
+  ClawCloseAction clawClose=ClawCloseAction(&robot.claw);
+  ClawOpenAction clawOpen=ClawOpenAction(&robot.claw);
+  ArmLiftAction armLift=ArmLiftAction(&robot.arm);
+  ArmLowerAction armDownt=ArmLowerAction(&robot.arm);
+  DriveBackwardsAction driveBack=DriveBackwardsAction(&robot.driveT);
+  DriveForwardAction driveForward=DriveForwardAction(&robot.driveT);
+  DriveLeftAction driveLeft=DriveLeftAction(&robot.driveT);
+  DriveRightAction driveRight=DriveRightAction(&robot.driveT);
+  DriveTurnRightAction turnLeft=DriveTurnRightAction(&robot.driveT);
+  DriveTurnLeftAction turnRight=DriveTurnLeftAction(&robot.driveT);
+  ClawBegin begin=ClawBegin(&robot.claw);
+  //begin.ExecuteAction(1);
+   clawOpen.ExecuteAction(1);
+  // driveForward.ExecuteAction(100);
+   clawClose.ExecuteAction(1);
+  // armLift.ExecuteAction(1);
+  // turnLeft.ExecuteAction(1);
+  // driveForward.ExecuteAction(128);
+  // clawOpen.ExecuteAction(1);
+
+
+
+
+
+
+  return;
 }
+// for(int counter=0;counter < 50;){
+//   robot.AutoUpdate(1);
+//   counter++;
+//   wait(1);
+// }
+// for(int counter=0;counter < 350;){
+//   robot.AutoUpdate(2);
+//   counter++;
+//   wait(1);
+// }
+// for(int counter=0;counter < 1500;){
+//   robot.AutoUpdate(3);
+//   counter++;
+//   wait(1);
+// }
+// for(int counter=0;counter < 500;){
+//   robot.AutoUpdate(4);
+//   counter++;
+//   wait(1);
+// }
+
+// autoStage(2, 50,robot);//open claw
+// autoStage(0,2000,robot);
+//
+//
+// autoStage(3,3000,robot);//drive forward
+// autoStage(0,1,robot);
+// autoStage(4,500,robot);//close claw
+//
+// autoStage(0,1,robot);
+//
+// autoStage(5,1450,robot);//arm lift
+// //autoStage(0,1,robot);
+//
+// autoStage(6,900,robot);//turn
+// autoStage(0,1,robot);
+// autoStage(7,1700,robot);//drive forward
+// autoStage(0,1,robot);
+// autoStage(8,50,robot);//open claw
+// autoStage(0,1,robot);
+// for(int i=250;i<=1000;i+=50){
+//   autoStage(1, i,robot);
+//   autoStage(0,1,robot);
+//   wait(5000);
+// }

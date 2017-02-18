@@ -12,7 +12,10 @@
 
 class Robot
 {
+private:
+  bool isAuto=false;
 public:
+
   Robot();
   Robot(int hangerPin ,int FRpin, int FLpin, int Blpin, int BRpin,std::array<int,4> clawPins,std::array<int,4> armPinsLeft,std::array<int,4> armPinsRight,int speedC); //constructor for ROBOT
   DriveTrain driveT;//drive train

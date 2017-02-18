@@ -21,6 +21,6 @@ Arm::Arm(std::array<int,4> pinsLeft,std::array<int,4> pinsRight){
   MotorsRight=ActuatorArray(pinsRight);
 }
 void Arm::Update(bool outPressed,bool inPressed){
-  MotorsLeft.Update(outPressed,inPressed);
-  MotorsRight.Update(inPressed,outPressed);
+  MotorsLeft.Update(inPressed,outPressed);
+  MotorsRight.Update(outPressed,inPressed);
 }

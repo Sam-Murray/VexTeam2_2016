@@ -1,4 +1,4 @@
-/**
+ /**
  * File for operator control code.
  *
  * This file should contain the user operatorControl() function and any functions related to it.
@@ -17,7 +17,16 @@
 
 #include "main.h"
 
-
+#include"ArmLiftAction.h"
+#include"ArmLowerAction.h"
+#include "ClawCloseAction.h"
+#include "ClawOpenAction.h"
+#include "DriveBackwardsAction.h"
+#include "DriveForwardAction.h"
+#include "DriveRightAction.h"
+#include "DriveLeftAction.h"
+#include "DriveTurnLeftAction.h"
+#include "DriveTurnRightAction.h"
 /**
  * Runs the user operator control code.
  *
@@ -56,7 +65,12 @@
    // }
    //digitalWrite(9,false);
  #include "Robot.h"
-
+ void autoStage(int stage, int duration,Robot robot) {
+   for(int counter=0;counter < duration; counter++){
+     robot.AutoUpdate(stage);
+     wait(1);
+   }
+ }
 void operatorControl()
 {
   // //printf("HELLO COMPUTER");
@@ -79,8 +93,18 @@ void operatorControl()
   //   }
   //}
   Robot robot= Robot();
+  int i=1;
+  DriveTurnLeftAction turnLeft=DriveTurnLeftAction(&robot.driveT);
+  DriveLeftAction driveLeft=DriveLeftAction(&robot.driveT);
+  DriveForwardAction driveForward=DriveForwardAction(&robot.driveT);
   while(true){
     robot.Update(1);
-  }
+    if(joystickGetDigital(1,8,JOY_UP)){
+        autonomous();
+      }
+
+    }
+
+
 
 }

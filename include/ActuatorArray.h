@@ -8,11 +8,13 @@
 class ActuatorArray{
 private:
   std::array<Actuator,4> Array;
+  int speed=127;
 
 public:
 ActuatorArray();
 ActuatorArray(std::array<int,4> pinNumber);
-void Update(bool outPressed, bool inPressed);
+ActuatorArray(std::array<int,4> pinNumber,int speedi);
+virtual void Update(bool outPressed, bool inPressed);
 
 };
 #endif

@@ -7,11 +7,16 @@ ActuatorArray::ActuatorArray(std::array<int,4> pinNumber){
   for(int i=0;i<pinNumber.size();i++){
     Array[i]=Actuator(pinNumber[i]);
   }
-
-
+}
+ActuatorArray::ActuatorArray(std::array<int,4> pinNumber, int speedi){
+  speed=speedi;
+  Array=std::array<Actuator,4>();
+  for(int i=0;i<pinNumber.size();i++){
+    Array[i]=Actuator(pinNumber[i]);
+  }
 }
 void ActuatorArray::Update(bool outPressed, bool inPressed){
   for(int i=0;i<Array.size();i++){
-    Array[i].Update(outPressed,inPressed);
+    Array[i].Update(outPressed,inPressed,speed);
   }
 }

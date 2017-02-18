@@ -1,8 +1,9 @@
 #include "Actuator.h"
 
-Actuator::Actuator():actuatorMotor(MotorUnit(10)){
+Actuator::Actuator():super(10){
+
 }
-Actuator::Actuator(int aPin):actuatorMotor(MotorUnit(aPin)){
+Actuator::Actuator(int aPin):super(aPin){
 }
 void Actuator::Update(bool outPressed, bool inPressed){
   int aSpeed=0;
@@ -11,5 +12,14 @@ void Actuator::Update(bool outPressed, bool inPressed){
   }else if(inPressed){
     aSpeed=-127;
   }
-  actuatorMotor.setSpeed(aSpeed);
+  super::setSpeed(aSpeed);
+}
+void Actuator::Update(bool outPressed, bool inPressed,int speed){
+  int aSpeed=0;
+  if(outPressed){
+    aSpeed=speed;
+  }else if(inPressed){
+    aSpeed=-speed;
+  }
+  super::setSpeed(aSpeed);
 }

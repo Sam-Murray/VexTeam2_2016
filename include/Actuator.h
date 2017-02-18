@@ -3,14 +3,15 @@
 #include "MotorUnit.h"
 #include "API.h"
 
-class Actuator
+class Actuator:public MotorUnit
 {
 private:
-  MotorUnit actuatorMotor;
+  typedef MotorUnit super;
 public:
   Actuator();
   Actuator(int aPin);
   void Update(bool outPressed, bool inPressed);
+  void Update(bool outPressed, bool inPressed,int speed);
 
 };
 

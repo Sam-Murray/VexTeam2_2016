@@ -1,37 +1,37 @@
 #include "DriveTrain.h"
-DriveTrain::DriveTrain():FR(MotorUnit(1)), FL(MotorUnit(2)), BL(MotorUnit(3)), BR(MotorUnit(4)){
+DriveTrain::DriveTrain():FR(ContinuousMotor(1)), FL(ContinuousMotor(2)), BL(ContinuousMotor(3)), BR(ContinuousMotor(4)){
   speedConvertion=1;
 }
 
-DriveTrain::DriveTrain(int FRpin, int FLpin, int BLpin, int BRpin,int speedC):FR(MotorUnit(FRpin)), FL(MotorUnit(FLpin)), BL(MotorUnit(BLpin)), BR(MotorUnit(BRpin)){
+DriveTrain::DriveTrain(int FRpin, int FLpin, int BLpin, int BRpin,int speedC):FR(ContinuousMotor(FRpin)), FL(ContinuousMotor(FLpin)), BL(ContinuousMotor(BLpin)), BR(ContinuousMotor(BRpin)){
   speedConvertion=speedC;
 }
 void DriveTrain::MotorSet(int FRs, int FLs, int BLs, int BRs){
-  FR.setSpeed(FRs);
-  FL.setSpeed(FLs);
-  BL.setSpeed(BLs);
-  BR.setSpeed(BRs);
+  FR.Update(FRs);
+  FL.Update(FLs);
+  BL.Update(BLs);
+  BR.Update(BRs);
 }
 void DriveTrain::allMotorSet(int speed){
-  // FR.setSpeed(-speed);
-  // FL.setSpeed(speed);
-  // BL.setSpeed(speed);
-  // BR.setSpeed(-speed);
+  // FR.Update(-speed);
+  // FL.Update(speed);
+  // BL.Update(speed);
+  // BR.Update(-speed);
   MotorSet(-speed,speed,speed,-speed);
 }
 void DriveTrain::backMotorSet(int speed){
-  BL.setSpeed(speed);
-  BR.setSpeed(speed);
+  BL.Update(speed);
+  BR.Update(speed);
 }
 void DriveTrain::frontMotorSet(int speed){
-  FR.setSpeed(speed);
-  FL.setSpeed(speed);
+  FR.Update(speed);
+  FL.Update(speed);
 }
 void DriveTrain::allMotorSetStrafe(int speed){
-  // FR.setSpeed(-speed);
-  // FL.setSpeed(-speed);
-  // BL.setSpeed(speed);
-  // BR.setSpeed(speed);
+  // FR.Update(-speed);
+  // FL.Update(-speed);
+  // BL.Update(speed);
+  // BR.Update(speed);
   MotorSet(-speed,-speed,speed,speed);
 
 }

@@ -1,16 +1,16 @@
 #ifndef DRIVE_TRAIN_H
 #define DRIVE_TRAIN_H
-#include "MotorUnit.h"
+#include "ContinuousMotor.h"
 #include "API.h"
 #include "math.h"
 
 class DriveTrain
 {
 private:
-  MotorUnit FR; //front right motor
-  MotorUnit FL; //front left motor
-  MotorUnit BL;//back left motor
-  MotorUnit BR;//back right motor
+  ContinuousMotor FR; //front right motor
+  ContinuousMotor FL; //front left motor
+  ContinuousMotor BL;//back left motor
+  ContinuousMotor BR;//back right motor
   int speedConvertion;
   void allMotorSet(int speed);
   void allMotorSetStrafe(int speed);
